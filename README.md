@@ -72,3 +72,7 @@ HominidsModel(10, 10, path="MapsCsv/basicMapWaterHole100x100.csv", ...)
 ```bash
 python3 run_debug.py 90 720 10 10 10 50 50 50 50 20 0 0
 ```
+
+📝 License
+
+This project is under the [MIT](./LICENSE) license.
