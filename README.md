@@ -67,8 +67,4 @@ The default map path and grid dimensions are currently defined in `run_debug.py`
 HominidsModel(10, 10, path="MapsCsv/basicMapWaterHole100x100.csv", ...)
 ```
 
-## Example
 
-```bash
-python3 run_debug.py 90 720 10 10 10 50 50 50 50 20 0 0
-```
