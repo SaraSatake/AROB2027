@@ -29,16 +29,16 @@ python -m pip install "mesa==2.4.0" pygame
 
 ## Running a simulation
 
-The script expects **12 positional arguments**, in this exact order:
+The script expects **13 positional arguments**, in this exact order:
 
 ```text
-days_to_run clockDay evaporation followers explorers plantsA plantsB plantsC plantsD nests hyenas crocodiles
+days_to_run clockDay evaporation followers EM-Volatility(mu) explorers plantsA plantsB plantsC plantsD nests hyenas crocodiles
 ```
 
 Example:
 
 ```bash
-python3 run_debug.py 90 720 10 10 10 50 50 50 50 20 0 0 > output.txt
+python3 run_debug.py 90 720 10 0.1 10 10 50 50 50 50 20 0 0 > output.txt
 ```
 
 This command runs the model for 90 days and saves its standard output to `output.txt`.
@@ -65,12 +65,6 @@ The default map path and grid dimensions are currently defined in `run_debug.py`
 
 ```python
 HominidsModel(10, 10, path="MapsCsv/basicMapWaterHole100x100.csv", ...)
-```
-
-
-
-```bash
-python3 run_debug.py 90 720 10 10 10 50 50 50 50 20 0 0
 ```
 
 📝 License

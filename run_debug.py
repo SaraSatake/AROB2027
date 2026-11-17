@@ -48,27 +48,27 @@ all_runs_calories = []
 all_runs_fruits = []
 all_runs_attacks = []
 
-def EvaporatesPheromone(modelObject, stepCount, stepEvaporation):  
+def EvaporatesPheromone(modelObject, stepCount, stepEvaporation, mu):  
     if stepCount % stepEvaporation == 0:
         for i in range(modelObject.gridPheromone.width):
             for j in range(modelObject.gridPheromone.height):
                 coordinate = (i,j)
                 if(modelObject.gridPheromone.get_coord_attribute(coordinate) != 0 ):
                     if model.grid.get_coord_attribute((coordinate)) == 'Unflooded': 
-                        modelObject.gridPheromone.add_coord_attribute(coordinate, int(int(model.gridPheromone.get_coord_attribute(coordinate))*0.5))
+                        modelObject.gridPheromone.add_coord_attribute(coordinate, int(int(model.gridPheromone.get_coord_attribute(coordinate))*mu))
                     else:
-                        modelObject.gridPheromone.add_coord_attribute(coordinate, int(int(model.gridPheromone.get_coord_attribute(coordinate))*0.5))
+                        modelObject.gridPheromone.add_coord_attribute(coordinate, int(int(model.gridPheromone.get_coord_attribute(coordinate))*mu))
 
-def EvaporatesDangerousPheromone(modelObject, stepCount, stepEvaporation):
+def EvaporatesDangerousPheromone(modelObject, stepCount, stepEvaporation, mu):
     if stepCount % stepEvaporation == 0:
         for i in range(modelObject.gridDangerousPheromone.width):
             for j in range(modelObject.gridDangerousPheromone.height):
                 coordinate = (i,j)
                 if(modelObject.gridDangerousPheromone.get_coord_attribute(coordinate) != 0 ):
                     if model.grid.get_coord_attribute((coordinate)) == 'Unflooded':
-                        modelObject.gridDangerousPheromone.add_coord_attribute(coordinate, int(int(model.gridDangerousPheromone.get_coord_attribute(coordinate))*0.5))
+                        modelObject.gridDangerousPheromone.add_coord_attribute(coordinate, int(int(model.gridDangerousPheromone.get_coord_attribute(coordinate))*mu))
                     else:
-                        modelObject.gridDangerousPheromone.add_coord_attribute(coordinate, int(int(model.gridDangerousPheromone.get_coord_attribute(coordinate))*0.5))
+                        modelObject.gridDangerousPheromone.add_coord_attribute(coordinate, int(int(model.gridDangerousPheromone.get_coord_attribute(coordinate))*mu))
 
 def salvar_dataframe_para_csv(df, name_file):
     df.to_csv(name_file, index=False)
@@ -85,14 +85,15 @@ for run_id in range(num_executions):
     days_to_run = int(sys.argv[1])
     clockDay = int(sys.argv[2])
     evaporation = int(sys.argv[3])
+    mu = float(sys.argv[4])
 
-    followers = int(sys.argv[4])
-    explorers = int(sys.argv[5])
+    followers = int(sys.argv[5])
+    explorers = int(sys.argv[6])
 
-    plantsA = int(sys.argv[6])
-    plantsB = int(sys.argv[7])
-    plantsC = int(sys.argv[8])
-    plantsD = int(sys.argv[9])
+    plantsA = int(sys.argv[7])
+    plantsB = int(sys.argv[8])
+    plantsC = int(sys.argv[9])
+    plantsD = int(sys.argv[10])
 
     nests = int(sys.argv[10])
     hyenas = int(sys.argv[11])
@@ -159,8 +160,8 @@ for run_id in range(num_executions):
                 break
 
         model.step()
-        EvaporatesPheromone(model,s,evaporation)
-        EvaporatesDangerousPheromone(model,s,evaporation)
+        EvaporatesPheromone(model,s,evaporation, mu)
+        EvaporatesDangerousPheromone(model,s,evaporation, mu)
 
         turn_on_visualization_heatmap = not turn_on_visualization_heatmap
         visualizationModel.DrawPyGame(model, space_press_count)
