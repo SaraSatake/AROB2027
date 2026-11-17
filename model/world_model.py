@@ -210,7 +210,7 @@ class HominidsModel(mesa.Model):
         # Creating Plants type "A"
         gridPlants = np.zeros((width, height))
         for i in range(self.number_plantsA):
-            a = PlantAgent(self.next_id(), self, "plantA", 5, 0.3, 15, 0.4, listPlantClustersCoordinates) 
+            a = PlantAgent(self.next_id(), self, "plantA", 5, 0.03, 15, 0.4, listPlantClustersCoordinates) 
             self.schedule.add(a)
             self.grid.place_agent(a, a.start_location)
             self.grid.add_coord_attribute(a.start_location, 'PlantA')
@@ -222,7 +222,7 @@ class HominidsModel(mesa.Model):
         
         # Creating Plants type "B"
         for i in range(self.number_plantsB):
-            a = PlantAgent(self.next_id(), self, "plantB", 2, 1, 50, 0.2, listPlantClustersCoordinates)
+            a = PlantAgent(self.next_id(), self, "plantB", 2, 0.1, 50, 0.2, listPlantClustersCoordinates)
             self.schedule.add(a)
             self.grid.place_agent(a, a.start_location)
             self.grid.add_coord_attribute(a.start_location, 'PlantB')
@@ -231,7 +231,7 @@ class HominidsModel(mesa.Model):
 
             # Creating Plants type "C"
         for i in range(self.number_plantsC):
-            a = PlantAgent(self.next_id(), self, "plantC", 20, 10, 200, 0.1, listPlantClustersCoordinates)
+            a = PlantAgent(self.next_id(), self, "plantC", 20, 1, 200, 0.1, listPlantClustersCoordinates)
             self.schedule.add(a)
             self.grid.place_agent(a, a.start_location)
             self.grid.add_coord_attribute(a.start_location, 'PlantC')
@@ -240,7 +240,7 @@ class HominidsModel(mesa.Model):
 
             # Creating Plants type "D"
         for i in range(self.number_plantsD):
-            a = PlantAgent(self.next_id(), self, "plantD", 10, 5, 30, 0.3, listPlantClustersCoordinates)
+            a = PlantAgent(self.next_id(), self, "plantD", 10, 0.5, 30, 0.3, listPlantClustersCoordinates)
             self.schedule.add(a)
             self.grid.place_agent(a, a.start_location)
             self.grid.add_coord_attribute(a.start_location, 'PlantD')
